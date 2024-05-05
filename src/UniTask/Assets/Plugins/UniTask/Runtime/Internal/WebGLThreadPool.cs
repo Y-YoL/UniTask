@@ -1,4 +1,4 @@
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
 #nullable enable
 
 using System;
@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Cysharp.Threading.Tasks.Internal
 {
-
     /// <summary>
     /// ThreadPool for WebGL
     /// </summary>
