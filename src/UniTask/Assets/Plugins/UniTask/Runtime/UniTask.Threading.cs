@@ -200,7 +200,7 @@ namespace Cysharp.Threading.Tasks
 
             public void OnCompleted(Action continuation)
             {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
                 WebGLThreadPool.QueueUserWorkItem(switchToCallback, continuation);
 #else
                 ThreadPool.QueueUserWorkItem(switchToCallback, continuation);
@@ -211,7 +211,7 @@ namespace Cysharp.Threading.Tasks
             {
 #if NETCOREAPP3_1
                 ThreadPool.UnsafeQueueUserWorkItem(ThreadPoolWorkItem.Create(continuation), false);
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !UNITY_EDITOR
                 WebGLThreadPool.QueueUserWorkItem(switchToCallback, continuation);
 #else
                 ThreadPool.UnsafeQueueUserWorkItem(switchToCallback, continuation);
