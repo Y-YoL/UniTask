@@ -54,6 +54,7 @@ namespace Cysharp.Threading.Tasks.Internal
                     if (thread == null)
                     {
                         thread = new WebGLThread(Execute);
+                        thread.Start();
                     }
                 }
             }
